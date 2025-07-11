@@ -621,7 +621,7 @@ closeShop(shop, success) {
 
         ToolTip, % "Error In Detecting " . shop
         SetTimer, HideTooltip, -1500
-        SendDiscordMessage(webhookURL, "Failed To Detect " . shop . " Shop Opening [Error]" . (PingSelected ? " <@578984890029309973>" : ""))
+        SendDiscordMessage(webhookURL, "Failed To Detect " . shop . " Shop Opening [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
         ; failsafe
         uiUniversal("3332223111133322231111054105")
 
@@ -709,7 +709,7 @@ quickDetectEgg(buyColor, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2Rati
         uiUniversal(5, 1, 1)
         ToolTip, Error In Detection
         SetTimer, HideTooltip, -1500
-        SendDiscordMessage(webhookURL, "Failed To Detect Any Egg [Error]" . (PingSelected ? " <@578984890029309973>" : ""))
+        SendDiscordMessage(webhookURL, "Failed To Detect Any Egg [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
     }
 
 }
@@ -777,7 +777,7 @@ quickDetect(color1, color2, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2R
                 uiUniversal(50, 0, 1, 1)
                 Sleep, 50
                 if (ping)
-                    SendDiscordMessage(webhookURL, "Bought " . currentItem . ". <@578984890029309973>")
+                    SendDiscordMessage(webhookURL, "Bought " . currentItem . ". <@" . discordUserID . ">")
                 else
                     SendDiscordMessage(webhookURL, "Bought " . currentItem . ".")
             }
@@ -794,7 +794,7 @@ quickDetect(color1, color2, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2R
             uiUniversal(500, 1, 1)
             Sleep, 50
             if (ping)
-                SendDiscordMessage(webhookURL, "Bought " . currentItem . ". <@578984890029309973>")
+                SendDiscordMessage(webhookURL, "Bought " . currentItem . ". <@" . discordUserID . ">")
             else
                 SendDiscordMessage(webhookURL, "Bought " . currentItem . ".")
         }
@@ -1902,7 +1902,7 @@ AutoReconnect:
         Run, % privateServerLink
         ToolTip, Attempting To Reconnect
         SetTimer, HideTooltip, -5000
-        SendDiscordMessage(webhookURL, "Lost connection or macro errored, attempting to reconnect..." . (PingSelected ? " <@578984890029309973>" : ""))
+        SendDiscordMessage(webhookURL, "Lost connection or macro errored, attempting to reconnect..." . (PingSelected ? " <@" . discordUserID . ">" : ""))
         sleepAmount(15000, 30000)
         SetTimer, CheckLoadingScreen, 5000
     }
@@ -1923,7 +1923,7 @@ CheckLoadingScreen:
     else {
         ToolTip, Rejoined Successfully
         sleepAmount(5000, 10000)
-        SendDiscordMessage(webhookURL, "Successfully reconnected to server." . (PingSelected ? " <@578984890029309973>" : ""))
+        SendDiscordMessage(webhookURL, "Successfully reconnected to server." . (PingSelected ? " <@" . discordUserID . ">" : ""))
         Sleep, 200
         Gosub, StartScanMultiInstance
     }
@@ -2205,7 +2205,7 @@ CosmeticShopPath:
                 label := StrReplace(item, " ", "")
                 currentItem := cosmeticItems[A_Index]
                 Gosub, %label%
-                SendDiscordMessage(webhookURL, "Bought " . currentItem . (PingSelected ? " <@578984890029309973>" : ""))
+                SendDiscordMessage(webhookURL, "Bought " . currentItem . (PingSelected ? " <@" . discordUserID . ">" : ""))
                 Sleep, 100
             }
             SendDiscordMessage(webhookURL, "Cosmetic Shop Closed.")
@@ -2222,7 +2222,7 @@ CosmeticShopPath:
         uiUniversal("111114150320")
     }
     else {
-        SendDiscordMessage(webhookURL, "Failed To Detect Cosmetic Shop Opening [Error]" . (PingSelected ? " <@578984890029309973>" : ""))
+        SendDiscordMessage(webhookURL, "Failed To Detect Cosmetic Shop Opening [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
         ; failsafe
         uiUniversal("11114111350")
         Sleep, 50
